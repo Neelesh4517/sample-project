@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProductsPage from "./BasicPage";
+import ProductsPage from "./basicpage";
 // import ProductsPage from "./basicpage";
 
 const App: React.FC = () => {

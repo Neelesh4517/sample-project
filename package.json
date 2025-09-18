@@ -1,4 +1,5 @@
 {
+  "homepage": "https://neelesh4517.github.io/neelesh-demo-project-estetica/",
   "name": "estetica",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "amr -d dist"
   },
   "dependencies": {
     "react": "^19.1.1",
