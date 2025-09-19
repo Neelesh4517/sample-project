@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./OrderCompletion.css";
 
 type CartItem = {
-  id: number,
-  name: string,
-  image: string,
-  quantity: number,
-  unitPrice: number
+  id: number;
+  name: string;
+  image: string;
+  quantity: number;
+  unitPrice: number;
 };
 
 type OrderCompletionProps = {
@@ -17,7 +17,6 @@ type OrderCompletionProps = {
 const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) => {
   const [discount, setDiscount] = useState<number>(0);
   const [serviceTotal] = useState<number>(1800); 
-  console.log(onBack);
 
   // Calculate totals
   const productTotal = cartItems.reduce((total, item) => total + (item.unitPrice * item.quantity), 0);
@@ -26,13 +25,15 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
   const tax = subtotal * 0.18; // 18% tax
   const finalTotal = subtotal + tax;
 
-  
+  const updateQuantity = (id: number, newQuantity: number) => {
+  };
+
   const removeItem = (id: number) => {
-    console.log(id);
   };
 
   return (
     <div className="order-completion-page">
+      {/* Header */}
       <header className="header">
         <div className="header-left">
           <img src="\src\assets\logo.png" className="logo"></img>
@@ -43,6 +44,7 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
             </span>
           </div>
         </div>
+
         <div className="header-center">
           <input
             type="text"
@@ -63,8 +65,10 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
             <h2 className="section-title">Order Completion</h2>
             <p className="section-subtitle">Booking Summary - APT-001</p>
           </div>
+
           <div className="products-section">
             <h3 className="products-title">Products Used</h3>
+            
             {cartItems.map((item) => (
               <div key={item.id} className="product-item">
                 <div className="product-info">
@@ -84,6 +88,7 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
                 </div>
               </div>
             ))}
+
             <button className="add-extra-btn">
               + Add Extra Products
             </button>
@@ -91,15 +96,18 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
         </div>
         <div className="billing-section">
           <h2 className="billing-title">Billing Summary</h2>
+          
           <div className="billing-details">
             <div className="billing-row">
               <span className="label">Service Total:</span>
               <span className="value">₹{serviceTotal}</span>
             </div>
+            
             <div className="billing-row">
               <span className="label">Product Total:</span>
               <span className="value">₹{productTotal}</span>
             </div>
+            
             <div className="billing-row">
               <span className="label">Order Discount (%):</span>
               <input
@@ -111,15 +119,18 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
                 max="100"
               />
             </div>
+            
             <div className="billing-row">
               <span className="label">Tax (18%):</span>
               <span className="value">₹{tax.toFixed(2)}</span>
             </div>
+            
             <div className="billing-row final-total">
               <span className="label">Final Total:</span>
               <span className="value">₹{finalTotal.toFixed(2)}</span>
             </div>
           </div>
+
           <button className="complete-payment-btn">
             ✨ Complete Payment
           </button>
