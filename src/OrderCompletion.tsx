@@ -17,7 +17,7 @@ type OrderCompletionProps = {
 const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) => {
   const [discount, setDiscount] = useState<number>(0);
   const [serviceTotal] = useState<number>(1800); 
-
+console.log(onBack,"back")
   // Calculate totals
   const productTotal = cartItems.reduce((total, item) => total + (item.unitPrice * item.quantity), 0);
   const discountAmount = (serviceTotal + productTotal) * (discount / 100);
@@ -25,10 +25,11 @@ const OrderCompletion: React.FC<OrderCompletionProps> = ({ cartItems, onBack }) 
   const tax = subtotal * 0.18; // 18% tax
   const finalTotal = subtotal + tax;
 
-  const updateQuantity = (id: number, newQuantity: number) => {
-  };
+  // const updateQuantity = (id: number, newQuantity: number) => {
+  // };
 
   const removeItem = (id: number) => {
+    console.log(id,"id")
   };
 
   return (
